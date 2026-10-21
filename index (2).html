@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>แมวมาให้กำลังใจ 🐱</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg1:#ffe8f1; --bg2:#fff1dc; --ink:#6b3a4f; --soft:#a8708a;
+  --card:#fffafc; --line:#ffc4d9; --accent:#ff7fa8; --accent2:#ffb36b; --bubble:#ffffff;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg1:#2b1730; --bg2:#3a2030; --ink:#ffe6f0; --soft:#e0a9c0;
+    --card:#412a4a; --line:#6d4a7a; --accent:#ff8fb3; --accent2:#ffb36b; --bubble:#4d3257;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg1:#2b1730; --bg2:#3a2030; --ink:#ffe6f0; --soft:#e0a9c0;
+  --card:#412a4a; --line:#6d4a7a; --accent:#ff8fb3; --accent2:#ffb36b; --bubble:#4d3257;
+}
+*{box-sizing:border-box}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;min-height:100%;font-family:'Mali','Sarabun',sans-serif;color:var(--ink);
+  background:radial-gradient(circle at 15% 10%,var(--bg1),transparent 55%),
+             radial-gradient(circle at 90% 90%,var(--bg2),transparent 55%),var(--bg1);
+  background-color:var(--bg1);
+  overflow-x:hidden;
+}
+main{max-width:640px;margin:0 auto;padding:28px 18px 64px;text-align:center;position:relative;z-index:1}
+h1{font-family:'Itim','Mali',sans-serif;font-weight:400;font-size:clamp(28px,7vw,40px);margin:8px 0 4px;line-height:1.25}
+.sub{color:var(--soft);margin:0 0 18px;font-size:15px}
+
+/* stage */
+.stage{position:relative;margin:0 auto;width:min(86vw,340px)}
+.bubble{
+  position:relative;background:var(--bubble);border:2.5px solid var(--line);border-radius:22px;
+  padding:14px 16px;min-height:74px;display:flex;align-items:center;justify-content:center;
+  font-size:17px;line-height:1.55;margin:0 auto 18px;max-width:340px;
+  box-shadow:0 6px 0 var(--line);
+}
+.bubble::after{
+  content:"";position:absolute;left:50%;bottom:-13px;width:22px;height:22px;background:var(--bubble);
+  border-right:2.5px solid var(--line);border-bottom:2.5px solid var(--line);transform:translateX(-50%) rotate(45deg);
+}
+.bubble.pop{animation:pop .35s ease}
+@keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+
+#cat{width:100%;height:auto;cursor:pointer;display:block;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#cat:focus-visible{outline:3px dashed var(--accent);outline-offset:6px;border-radius:24px}
+#tail{transform-box:fill-box;transform-origin:10% 90%;animation:wag 2.6s ease-in-out infinite}
+@keyframes wag{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(14deg)}}
+.blinkable{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+#head{transform-box:fill-box;transform-origin:50% 90%}
+#head.pet{animation:nuzzle .6s ease}
+@keyframes nuzzle{0%{transform:rotate(0)}25%{transform:rotate(-6deg) translateY(2px)}50%{transform:rotate(5deg)}75%{transform:rotate(-3deg)}100%{transform:rotate(0)}}
+.happy .open{display:none}
+.open{display:inline}
+.joy{display:none}
+.happy .joy{display:inline}
+.happy .cheek{opacity:.95}
+.cheek{opacity:.6;transition:opacity .3s}
+#munch{display:none}
+.eating #munch{display:inline}
+.eating .mouth{display:none}
+
+.stats{margin:10px 0 0;font-size:14px;color:var(--soft);min-height:22px}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 6px}
+.btn{
+  font:inherit;font-size:16px;color:var(--ink);background:var(--card);border:2.5px solid var(--line);
+  border-radius:999px;padding:10px 18px;cursor:pointer;box-shadow:0 4px 0 var(--line);
+  transition:transform .12s, box-shadow .12s;touch-action:manipulation;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.btn:focus-visible{outline:3px dashed var(--accent);outline-offset:3px}
+.btn.main{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 0 #d9547f}
+.btn.main:active{box-shadow:0 1px 0 #d9547f}
+
+/* letter */
+#letter{
+  margin:26px auto 0;background:var(--card);border:2.5px dashed var(--line);border-radius:26px;
+  padding:24px 22px;text-align:left;line-height:1.95;font-size:16.5px;
+}
+#letter[hidden]{display:none}
+#letter h2{font-family:'Itim','Mali',sans-serif;font-weight:400;font-size:24px;margin:0 0 8px;text-align:center}
+#letter p{margin:0 0 12px;opacity:0;transform:translateY(8px);animation:line .6s forwards}
+#letter p:nth-of-type(1){animation-delay:.2s}
+#letter p:nth-of-type(2){animation-delay:1s}
+#letter p:nth-of-type(3){animation-delay:2s}
+#letter p:nth-of-type(4){animation-delay:3s}
+#letter p:nth-of-type(5){animation-delay:4s;text-align:right;color:var(--soft)}
+@keyframes line{to{opacity:1;transform:none}}
+
+/* cards */
+.cards-title{font-family:'Itim','Mali',sans-serif;font-size:22px;margin:38px 0 4px;font-weight:400}
+.hint{color:var(--soft);font-size:14px;margin:0 0 14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.flip{perspective:900px;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;height:190px;touch-action:manipulation}
+.flip:focus-visible{outline:3px dashed var(--accent);outline-offset:4px;border-radius:22px}
+.inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .inner{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;
+  border:2.5px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:14px;gap:8px;box-shadow:0 5px 0 var(--line);
+}
+.front{background:var(--card)}
+.front b{font-family:'Itim','Mali',sans-serif;font-weight:400;font-size:20px}
+.front span{font-size:34px}
+.back{background:var(--accent);border-color:var(--accent);color:#fff;transform:rotateY(180deg);font-size:15.5px;line-height:1.6;box-shadow:0 5px 0 #d9547f}
+
+/* background play */
+#bg{position:fixed;inset:0;overflow:hidden;z-index:0}
+.bgi{position:absolute;bottom:-60px;font-size:var(--s);opacity:.6;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;animation:drift var(--t) linear var(--d) infinite}
+@keyframes drift{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(calc(var(--sx) * .5),-58vh) rotate(calc(var(--rr) * .5))}100%{transform:translate(var(--sx),-118vh) rotate(var(--rr))}}
+.tw{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0;animation:tw 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes tw{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:.75;transform:scale(1.5)}}
+.theme{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:12px;z-index:5;padding:6px 12px;font-size:14px}
+
+/* floaters */
+#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.fl{position:absolute;font-size:24px;animation:up 1.6s ease-out forwards;will-change:transform,opacity}
+@keyframes up{0%{opacity:0;transform:translate(0,0) scale(.5)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),-170px) scale(1.2) rotate(var(--r))}}
+.fish{position:absolute;font-size:34px;left:-10%;bottom:6%;transition:left .9s ease-in, bottom .9s ease-out;z-index:3;pointer-events:none}
+.stage.go .fish{left:44%;bottom:34%}
+@media (prefers-reduced-motion: reduce){
+  #tail,.blinkable{animation:none}
+  .bgi{display:none}
+  .tw{animation:none;opacity:.4}
+  .fl{animation-duration:.01s}
+  .inner{transition:none}
+  #letter p{animation-duration:.01s;animation-delay:0s!important}
+}
+</style>
+</head>
+<body>
+<button class="btn theme" id="theme" aria-label="สลับโหมดสว่าง/มืด">🌙</button>
+<div id="bg" aria-hidden="true"></div>
+<div id="fx" aria-hidden="true"></div>
+
+<main>
+  <h1 id="title">ถึงคนเก่งของเรา 🌷</h1>
+  <p class="sub">มีแมวตัวนึงมาเฝ้าให้กำลังใจคุณอยู่นะ ลองจิ้มดูสิ</p>
+
+  <div class="stage" id="stage">
+    <div class="bubble" id="bubble" aria-live="polite">จิ้มที่เราได้เลยนะ เมี้ยว~ 🐾</div>
+    <span class="fish" id="fish" aria-hidden="true">🐟</span>
+
+    <svg id="cat" viewBox="0 0 240 250" role="button" tabindex="0" aria-label="แมวน่ารัก กดเพื่อลูบหัว">
+      <!-- tail -->
+      <path id="tail" d="M168 215 C215 215 228 170 205 150 C198 144 190 152 196 160 C208 176 200 196 168 198 Z" fill="#f6b98a"/>
+      <!-- body -->
+      <ellipse cx="120" cy="198" rx="60" ry="44" fill="#ffe3c8"/>
+      <path d="M92 168 q6 14 0 26 M148 168 q-6 14 0 26" stroke="#f6b98a" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <ellipse cx="120" cy="206" rx="30" ry="26" fill="#fff5ea"/>
+      <!-- paws -->
+      <ellipse cx="94" cy="234" rx="19" ry="12" fill="#fff5ea" stroke="#f1c9a6" stroke-width="2"/>
+      <ellipse cx="146" cy="234" rx="19" ry="12" fill="#fff5ea" stroke="#f1c9a6" stroke-width="2"/>
+      <circle cx="94" cy="236" r="4" fill="#ffb3c7"/><circle cx="146" cy="236" r="4" fill="#ffb3c7"/>
+      <!-- heart tag -->
+      <path d="M120 188 c-10-9-18-2-12 6 l12 11 l12-11 c6-8-2-15-12-6z" fill="#ff7fa8"/>
+      <!-- head -->
+      <g id="head">
+        <polygon points="58,78 64,18 112,54" fill="#ffe3c8"/>
+        <polygon points="182,78 176,18 128,54" fill="#ffe3c8"/>
+        <polygon points="68,66 71,34 97,54" fill="#ffb3c7"/>
+        <polygon points="172,66 169,34 143,54" fill="#ffb3c7"/>
+        <ellipse cx="120" cy="104" rx="68" ry="58" fill="#ffe3c8"/>
+        <path d="M120 48 v14 M106 50 l4 12 M134 50 l-4 12" stroke="#f6b98a" stroke-width="6" stroke-linecap="round"/>
+        <!-- bow -->
+        <g transform="translate(70 44) rotate(-18)">
+          <path d="M0 0 l-16-10 v20z M0 0 l16-10 v20z" fill="#ff7fa8"/><circle r="4" fill="#ffd1e1"/>
+        </g>
+        <!-- eyes -->
+        <g class="open">
+          <g class="blinkable">
+            <g id="pupils">
+              <circle cx="94" cy="104" r="10" fill="#4a2a3a"/><circle cx="146" cy="104" r="10" fill="#4a2a3a"/>
+              <circle cx="98" cy="100" r="3.6" fill="#fff"/><circle cx="150" cy="100" r="3.6" fill="#fff"/>
+              <circle cx="91" cy="108" r="1.8" fill="#fff"/><circle cx="143" cy="108" r="1.8" fill="#fff"/>
+            </g>
+          </g>
+        </g>
+        <g class="joy" fill="none" stroke="#4a2a3a" stroke-width="5" stroke-linecap="round">
+          <path d="M83 108 Q94 92 105 108"/><path d="M135 108 Q146 92 157 108"/>
+        </g>
+        <!-- cheeks -->
+        <ellipse class="cheek" cx="72" cy="124" rx="12" ry="7" fill="#ff9fbd"/>
+        <ellipse class="cheek" cx="168" cy="124" rx="12" ry="7" fill="#ff9fbd"/>
+        <!-- nose & mouth -->
+        <path d="M113 116 h14 l-7 8z" fill="#ff7fa8"/>
+        <path class="mouth" d="M120 124 Q112 136 103 126 M120 124 Q128 136 137 126" stroke="#4a2a3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <ellipse id="munch" cx="120" cy="134" rx="8" ry="6" fill="#d9547f"/>
+        <!-- whiskers -->
+        <g stroke="#c99a7e" stroke-width="2.4" stroke-linecap="round">
+          <path d="M60 116 L32 110 M60 124 L30 128 M180 116 L208 110 M180 124 L210 128"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <p class="stats" id="stats">ยังไม่ได้ลูบหัวแมวเลย ลองดูนะ 🥺</p>
+
+  <div class="row">
+    <button class="btn main" id="pet">ลูบหัวแมว 🐾</button>
+    <button class="btn" id="feed">ให้ขนม 🐟</button>
+    <button class="btn" id="cheer">ขอกำลังใจอีก 💪</button>
+  </div>
+  <div class="row">
+    <button class="btn main" id="open">💌 เปิดจดหมายจากเรา</button>
+  </div>
+
+  <section id="letter" hidden aria-label="จดหมายถึงคุณ">
+    <h2 id="lt">ถึง <span class="nm">คุณ</span> คนเก่งของเรา</h2>
+    <p>พรุ่งนี้คือวันแรกของการสอบแล้วนะ แล้วหลังจากนั้นก็ยังมีสอบวันอื่นๆ อีก เรารู้ว่าคุณเหนื่อยมาเยอะ แต่ค่อยๆ ไปทีละวัน ทีละวิชานะ เราเป็นกำลังใจให้ทุกวันเลย แล้วก็ภูมิใจในตัวคุณมากๆ ด้วย</p>
+    <p>ไม่ว่าพรุ่งนี้จะออกมาเป็นยังไง คุณพยายามเต็มที่แล้ว และนั่นก็เก่งที่สุดในสายตาเราแล้วล่ะ</p>
+    <p>ขอให้ผลสอบออกมาดีอย่างที่คุณหวังเลยนะ เมื่อไหร่ที่เหนื่อยหันมา จะมีเราอยู่ข้างหลังเสมอน้าาา แวะมาหาเราได้55 เราจะอยู่ข้างๆ คุณเสมอ แล้วจะกอดให้แน่นๆ เลย 🤍</p>
+    <p>คืนนี้นอนหลับฝันดีนะ พรุ่งนี้คุณทำได้แน่นอน เราเชื่อแบบนั้นจริงๆ</p>
+    <p>รักและเป็นห่วงเสมอ<br>จากอาลัค กับแมวอ้วนตัวนี้ด้วย 🐾</p>
+  </section>
+
+  <h2 class="cards-title">แตะการ์ดดูสิ 🎀</h2>
+  <p class="hint">มีข้อความซ่อนอยู่ข้างหลังนะ</p>
+  <div class="cards">
+    <button class="flip"><div class="inner">
+      <div class="face front"><span>📚</span><b>ตั้งใจสอบนะ</b></div>
+      <div class="face back">ใจเย็นๆ นะ ค่อยๆ อ่านโจทย์ หายใจลึกๆ แล้วทำเต็มที่เท่าที่ทำได้ก็พอแล้ว เราเชียร์อยู่ข้างๆ เสมอเลย</div>
+    </div></button>
+    <button class="flip"><div class="inner">
+      <div class="face front"><span>🌟</span><b>ขอให้ผลสอบดี</b></div>
+      <div class="face back">ขอให้ผลสอบออกมาดีอย่างที่คุณหวังเลยนะ คุณเก่งอยู่แล้ว ทำได้อยู่แล้ว เราเชื่อแบบนั้นจริงๆ</div>
+    </div></button>
+    <button class="flip"><div class="inner">
+      <div class="face front"><span>🤍</span><b>เราอยู่ตรงนี้</b></div>
+      <div class="face back">เราภูมิใจในตัวคุณเสมอ และจะอยู่ข้างๆ คุณเสมอ ทั้งวันที่ดีและวันที่เหนื่อยเลยนะ เมื่อไหร่ที่เหนื่อยหันมา จะมีเราอยู่ข้างหลังเสมอน้าาา</div>
+    </div></button>
+  </div>
+
+  
+</main>
+
+<script>
+(function(){
+  // แก้ชื่อคนสอบตรงนี้ได้เลย เช่น "พี่ฟ้า" (เว้นว่างไว้จะใช้คำว่า "คุณ")
+  var NAME = "";
+
+  var $ = function(id){ return document.getElementById(id); };
+  var cat = $('cat'), head = $('head'), bubble = $('bubble'), stage = $('stage'),
+      stats = $('stats'), fx = $('fx'), pupils = $('pupils');
+
+  if (NAME) {
+    document.querySelectorAll('.nm').forEach(function(e){ e.textContent = NAME; });
+    $('title').textContent = 'ถึง' + NAME + 'คนเก่งของเรา 🌷';
+  }
+
+  var msgs = [
+    'สู้ๆ นะคนเก่งของเรา 💪',
+    'พรุ่งนี้คุณทำได้แน่นอนเลย เราเชื่อ',
+    'หายใจลึกๆ แล้วทำเต็มที่เหมือนที่ซ้อมมานะ',
+    'ถ้าเหนื่อยก็พักได้นะ เราอยู่ตรงนี้',
+    'เราภูมิใจในตัวคุณเสมอเลยนะ 🥹',
+    'ขอให้ผลสอบออกมาดีอย่างที่คุณหวังนะ ✨',
+    'คืนนี้นอนหลับฝันดีนะ เดี๋ยวเรานั่งเฝ้าให้เอง',
+    'คุณเก่งกว่าที่คุณคิดเยอะเลยรู้มั้ย',
+    'เราอยู่ข้างๆ คุณเสมอเลยนะ จะไม่ไปไหนเลย 🤍',
+    'ตั้งใจสอบนะ แต่อย่าลืมดูแลตัวเองด้วยน้า',
+    'คิดถึงเรานิดนึงก็ได้นะ ถ้าตื่นเต้น เราจะส่งแรงใจไปให้ 💌'
+  ];
+  var last = -1, pets = 0;
+
+  function say(t){
+    bubble.textContent = t;
+    bubble.classList.remove('pop'); void bubble.offsetWidth; bubble.classList.add('pop');
+  }
+  function randMsg(){
+    var i; do { i = Math.floor(Math.random()*msgs.length); } while (i === last);
+    last = i; return msgs[i];
+  }
+  function floaters(n, x, y, set){
+    var s = set || ['💗','💖','🤍','✨','🌸','🐾'];
+    for (var i=0;i<n;i++){
+      var e = document.createElement('span');
+      e.className = 'fl';
+      e.textContent = s[Math.floor(Math.random()*s.length)];
+      e.style.left = (x + (Math.random()*80-40)) + 'px';
+      e.style.top = (y + (Math.random()*30-15)) + 'px';
+      e.style.setProperty('--dx', (Math.random()*120-60) + 'px');
+      e.style.setProperty('--r', (Math.random()*50-25) + 'deg');
+      e.style.animationDelay = (Math.random()*0.25) + 's';
+      fx.appendChild(e);
+      setTimeout(function(el){ return function(){ el.remove(); }; }(e), 2000);
+    }
+  }
+  function happy(ms){
+    cat.classList.add('happy');
+    clearTimeout(happy.t);
+    happy.t = setTimeout(function(){ cat.classList.remove('happy'); }, ms || 1800);
+  }
+  function center(){
+    var r = cat.getBoundingClientRect();
+    return { x: r.left + r.width/2, y: r.top + r.height*0.35 };
+  }
+
+  function pet(){
+    pets++;
+    head.classList.remove('pet'); void head.getBBox(); head.classList.add('pet');
+    happy();
+    var c = center(); floaters(6, c.x, c.y);
+    if (pets === 5) say('ลูบอีกนิดนะ เรากำลังจะบอกความลับอยู่ เมี้ยว~ 🤫');
+    else if (pets === 10){
+      say('ความลับคือ… เรารักที่คุณพยายามขนาดนี้ เก่งที่สุดเลยนะ 💖');
+      floaters(22, c.x, c.y);
+    } else if (pets % 10 === 0) say('ลูบอีกแล้วว เราหลอมละลายหมดแล้วเนี่ย 🥺');
+    else say(randMsg());
+    stats.textContent = 'ลูบหัวแมวไปแล้ว ' + pets + ' ครั้ง' + (pets < 10 ? ' (ถึง 10 มีความลับนะ 🤫)' : ' 💗');
+  }
+
+  $('pet').addEventListener('click', pet);
+  cat.addEventListener('click', pet);
+  cat.addEventListener('keydown', function(e){ if (e.key==='Enter' || e.key===' '){ e.preventDefault(); pet(); } });
+
+  $('cheer').addEventListener('click', function(){
+    say(randMsg()); happy(1200);
+    var c = center(); floaters(5, c.x, c.y, ['💪','⭐','✨','🔥']);
+  });
+
+  $('feed').addEventListener('click', function(){
+    var btn = this; btn.disabled = true;
+    stage.classList.add('go');
+    setTimeout(function(){
+      stage.classList.remove('go');
+      cat.classList.add('eating'); happy(2000);
+      var c = center(); floaters(5, c.x, c.y + 40, ['🐟','💗','😋']);
+      say('อร่อยยย ขอบคุณนะ! กินแล้วมีแรงเชียร์คุณต่อเลย 🐟💪');
+      setTimeout(function(){ cat.classList.remove('eating'); btn.disabled = false; }, 1500);
+    }, 950);
+  });
+
+  var letter = $('letter');
+  $('open').addEventListener('click', function(){
+    var willOpen = letter.hidden;
+    if (willOpen){
+      letter.hidden = false;
+      this.textContent = '💌 เก็บจดหมายไว้ก่อน';
+      happy(2500);
+      var c = center(); floaters(12, c.x, c.y);
+      setTimeout(function(){ letter.scrollIntoView({behavior:'smooth', block:'start'}); }, 80);
+    } else {
+      // re-trigger the line-by-line animation next time
+      letter.hidden = true;
+      this.textContent = '💌 เปิดจดหมายจากเรา';
+    }
+  });
+
+  document.querySelectorAll('.flip').forEach(function(b){
+    b.addEventListener('click', function(){
+      b.classList.toggle('on');
+      if (b.classList.contains('on')){
+        var r = b.getBoundingClientRect();
+        floaters(6, r.left + r.width/2, r.top + 40);
+      }
+    });
+  });
+
+  // eyes follow the pointer
+  function look(x, y){
+    var r = cat.getBoundingClientRect();
+    var dx = x - (r.left + r.width/2), dy = y - (r.top + r.height*0.42);
+    var d = Math.sqrt(dx*dx + dy*dy) || 1, m = Math.min(5, d/40);
+    pupils.setAttribute('transform', 'translate(' + (dx/d*m).toFixed(1) + ' ' + (dy/d*m).toFixed(1) + ')');
+  }
+  window.addEventListener('pointermove', function(e){ look(e.clientX, e.clientY); });
+
+  // background: twinkling dots + drifting icons you can pop
+  var bg = $('bg'), icons = ['🐾','✨','💗','☁️','🌸','⭐','🐟','🎀','🐾'];
+  for (var k=0;k<28;k++){
+    var t = document.createElement('span');
+    t.className = 'tw';
+    t.style.left = (Math.random()*100) + '%';
+    t.style.top = (Math.random()*100) + '%';
+    t.style.animationDelay = (Math.random()*3.2) + 's';
+    t.style.animationDuration = (2.4 + Math.random()*2.4) + 's';
+    bg.appendChild(t);
+  }
+  function mkIcon(init){
+    var e = document.createElement('span');
+    e.className = 'bgi';
+    e.textContent = icons[Math.floor(Math.random()*icons.length)];
+    e.style.setProperty('--s', (18 + Math.random()*24) + 'px');
+    e.style.setProperty('--t', (20 + Math.random()*22) + 's');
+    e.style.setProperty('--d', (init ? -Math.random()*32 : 0) + 's');
+    e.style.setProperty('--sx', (Math.random()*160-80) + 'px');
+    e.style.setProperty('--rr', (Math.random()*80-40) + 'deg');
+    e.style.left = (Math.random()*96) + '%';
+    e.addEventListener('pointerdown', function(ev){
+      ev.stopPropagation();
+      var r = e.getBoundingClientRect();
+      floaters(6, r.left, r.top, ['✨','💗','🌸','⭐']);
+      e.remove(); mkIcon(false);
+    });
+    bg.appendChild(e);
+  }
+  for (var j=0;j<16;j++) mkIcon(true);
+
+  // tap an empty spot for sparkles
+  document.addEventListener('pointerdown', function(e){
+    if (e.target.closest && e.target.closest('button,svg,#letter,.flip')) return;
+    floaters(3, e.clientX, e.clientY, ['✨','💗','⭐']);
+  });
+
+  // theme toggle
+  var root = document.documentElement, tb = $('theme');
+  var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  function applyTheme(){
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    tb.textContent = dark ? '☀️' : '🌙';
+  }
+  tb.addEventListener('click', function(){ dark = !dark; applyTheme(); });
+  applyTheme();
+})();
+</script>
+</body>
+</html>
